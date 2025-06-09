@@ -122,10 +122,11 @@
             <div class="container">
                 <h2>Me contacter</h2>
                 <span class="obligatoire">Les champs avec * sont obligatoires pour envoyer un message. <br><br></span>
-                <form method="POST">
+                <form method="POST" class="contact-form"> <!-- Ajoutez une classe pour cibler le formulaire -->
                     <div class="form-group">
                         <label for="nom">Nom :</label>
-                        <input type="text" id="nom" name="nom" placeholder="Nom*" required>
+                        <input type="text" id="name" name="nom" placeholder="Nom*" required>
+                        <!-- id="name" pour correspondre au JS -->
                     </div>
                     <div class="form-group">
                         <label for="email">Email :</label>
@@ -170,9 +171,9 @@
         </div>
     </footer>
     <script src="../js/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="../js/email.js"></script>
     <script src="../js/age.js"></script>
-    <script src="../js/webhost.js"></script>
 </body>
 
 </html>
