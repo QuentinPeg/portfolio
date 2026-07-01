@@ -10,6 +10,85 @@
     <title>Profil & Contact - Portfolio de Quentin Peguin</title>
     <link rel="stylesheet" href="../Css/Dossier.css">
     <link rel="stylesheet" href="../Css/header_footer_nav.css">
+    <style>
+        #main>article:nth-of-type(2) {
+            width: min(100%, 860px);
+            padding: 0;
+            align-items: stretch;
+        }
+
+        #main {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        #main>article {
+            width: 100%;
+            padding-left: 0;
+        }
+
+        #main>.container {
+            grid-column: 1 / -1;
+        }
+
+        #main>article:nth-of-type(2)>h2 {
+            margin-bottom: 18px;
+        }
+
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            width: 100%;
+        }
+
+        .competences-grid .star-rating {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 248, 255, 0.98));
+            border: 1px solid rgba(39, 55, 77, 0.12);
+            border-left: 5px solid #27374d;
+            border-radius: 16px;
+            padding: 18px 18px 16px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 10px 24px rgba(19, 28, 41, 0.08);
+        }
+
+        .competences-grid .star-rating h3 {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            color: #1f2d3d;
+            font-size: 1.05rem;
+        }
+
+        .competences-grid .star-rating p {
+            margin: 0;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: #4f5d73;
+            line-height: 1.5;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            #main {
+                grid-template-columns: 1fr;
+            }
+
+            #main>article:nth-of-type(2) {
+                width: 80% !important;
+            }
+
+            #main>.container {
+                grid-column: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -53,10 +132,7 @@
                 <div>
                     <img src="../Images/photoprofil.jpeg" alt="Photo de profil">
                 </div>
-                <p>Je m'appelle Quentin Peguin, j'ai <span id="age"></span> ans et je suis en BUT informatique (parcours
-                    cybersécurité et réseaux) à
-                    Grenoble avec pour BUT de devenir pen-tester.
-                </p>
+                <p>Je m'appelle Quentin Peguin, j'ai <span id="age"></span> ans et je suis étudiant en informatique. Je poursuis ma formation à l'ISIMA (école d'ingénieurs à Clermont Ferrand) pour me spécialiser en cybersécurité. Ce qui m'intéresse avant tout, c'est la sécurisation des systèmes d'information des entreprises et la sensibilisation des utilisateurs aux risques numériques. Je souhaite comprendre les menaces pour mieux protéger, autant sur le plan technique que sur le plan humain.</p>
                 <p>Ce portfolio a été conçu dans le but de rassembler mes différents projets informatiques. J'ai pu
                     réaliser
                     ces projets avec l'IUT mais aussi en dehors, pendant mon temps personnel.
@@ -68,59 +144,46 @@
                 </p>
             </article>
             <article>
-                <h2>Mes compétences en langage</h2>
-                <div class="star-rating">
-                    <h3>HTML :</h3>
-                    <div class="stars" data-rating="4">
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star empty">&#9734;</span>
+                <h2>Mes compétences</h2>
+                <div class="competences-grid">
+                    <div class="star-rating">
+                        <h3>Linux</h3>
+                        <p>administration, durcissement : défensif</p>
                     </div>
-                </div>
 
-                <div class="star-rating">
-                    <h3>CSS :</h3>
-                    <div class="stars" data-rating="4">
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star empty">&#9734;</span>
+                    <div class="star-rating">
+                        <h3>Python</h3>
+                        <p>transverse</p>
                     </div>
-                </div>
 
-                <div class="star-rating">
-                    <h3>PHP :</h3>
-                    <div class="stars" data-rating="2">
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star empty">&#9734;</span>
+                    <div class="star-rating">
+                        <h3>Réseaux</h3>
+                        <p>TCP/IP, protocoles : fondamental</p>
                     </div>
-                </div>
 
-                <div class="star-rating">
-                    <h3>JS :</h3>
-                    <div class="stars" data-rating="2">
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star empty">&#9734;</span>
-                        <span class="star empty">&#9734;</span>
+                    <div class="star-rating">
+                        <h3>Bash</h3>
+                        <p>scripting système</p>
                     </div>
-                </div>
 
-                <div class="star-rating">
-                    <h3>C++ :</h3>
-                    <div class="stars" data-rating="2">
-                        <span class="star full">&#9733;</span>
-                        <span class="star full">&#9733;</span>
-                        <span class="star empty">&#9734;</span>
-                        <span class="star empty">&#9734;</span>
-                        <span class="star empty">&#9734;</span>
+                    <div class="star-rating">
+                        <h3>Sécurité défensive</h3>
+                        <p>bonnes pratiques, hardening, gestion des logs : défensif</p>
+                    </div>
+
+                    <div class="star-rating">
+                        <h3>Sensibilisation et pédagogie</h3>
+                        <p>formation des utilisateurs : défensif / humain</p>
+                    </div>
+
+                    <div class="star-rating">
+                        <h3>SQL</h3>
+                        <p>compréhension des données et injections</p>
+                    </div>
+
+                    <div class="star-rating">
+                        <h3>Notions d'outils de reconnaissance</h3>
+                        <p>Nmap, Wireshark : compréhension des menaces</p>
                     </div>
                 </div>
 
