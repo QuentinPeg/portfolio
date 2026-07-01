@@ -1,228 +1,691 @@
-/* Background */
-body {
-    background-image: url(../Images/background_cloud.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    margin: 0;
-}
-
 html {
     overflow-x: hidden;
-
-}
-main{
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-main>h1{
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-}
-#main {
-    padding: 50px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: fit-content;
-    justify-content: space-around;
-    align-items: start;
-    overflow: hidden;
 }
 
-#main>article {
+main {
+    position: relative;
+    z-index: 0;
+    width: min(1240px, 100%);
+    margin: 0 auto;
+    padding: 2rem clamp(1rem, 3vw, 2rem) 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 10%;
-    width: 40%;
-    min-width: 300px;
-    height: fit-content;
+    gap: 1.25rem;
 }
 
-article>h2, article>h3{
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-article>p {
-    width: 100%;
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-article>ul {
-    width: 100%;
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    padding-left: 30px;
-}
-
-article>.grpspecification {
-    width: 100%;
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-div>img {
+main > h1 {
     margin: 0;
-    width: auto;
-    height: 150px;
-    border-radius: 50%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.72);
+    color: var(--text);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-align: center;
+    box-shadow: var(--shadow);
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    letter-spacing: 0.04em;
 }
 
-article>a>img {
-    width: calc(0.35*100vw);
-    border-radius: 10px;
-
+main > h1::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 2px;
+    margin: 0.55rem auto 0;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
-article>a {
-    width: calc(0.35*100vw);
+#main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: start;
 }
 
-article>a>iframe {
-    width: 100vw;
-    height: 100vh;
-    border: none;
-    transform-origin: top left;
-    transform: scale(0.35);
+#main > article {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.1rem;
+    border: 1px solid rgba(56, 189, 248, 0.14);
+    border-left: 4px solid var(--accent);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.1), rgba(15, 23, 42, 0.9) 48%, rgba(2, 6, 23, 0.98));
+    box-shadow: 0 18px 0 -10px rgba(2, 6, 23, 0.34), 0 28px 62px rgba(2, 6, 23, 0.58);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
+
+#main > article > * {
+    position: relative;
+    z-index: 1;
+}
+
+#main > article::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg, transparent 0 92%, rgba(56, 189, 248, 0.32) 92% 100%),
+        linear-gradient(180deg, rgba(56, 189, 248, 0.08), transparent 18%);
+    opacity: 0.8;
+}
+
+#main > article:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.38);
+    box-shadow: 0 24px 0 -10px rgba(2, 6, 23, 0.38), 0 34px 76px rgba(2, 6, 23, 0.66);
+}
+
+#main > article:first-of-type {
+    transform: translateY(0.6rem);
+}
+
+#main > article:nth-of-type(2)::before {
+    content: var(--competence-count) "\A" var(--competence-label);
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    color: rgba(226, 232, 240, 0.12);
+    font-family: var(--font-mono);
+    font-size: clamp(3.1rem, 6vw, 6rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-align: center;
+    white-space: pre-line;
+    text-shadow: 0 0 24px rgba(56, 189, 248, 0.12);
     pointer-events: none;
 }
 
 
-.aiframe {
-    height: calc(0.35* 100vh);
-    background-color: white;
+#main > .container {
+    grid-column: 1 / -1;
 }
 
-/*Lire la suite*/
+#main > article:nth-of-type(2) > h2 {
+    margin-bottom: 0.25rem;
+}
+
+article > h2,
+article > h3 {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--text);
+    position: relative;
+    padding-left: 0.85rem;
+    z-index: 1;
+}
+
+article > h2::before,
+article > h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.26em;
+    width: 3px;
+    height: 0.9em;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--accent), transparent);
+}
+
+article > h2 {
+    font-size: 1.45rem;
+    line-height: 1.35;
+}
+
+article > h2::after {
+    content: "";
+    position: absolute;
+    left: 0.85rem;
+    right: 0;
+    bottom: -0.35rem;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.65), transparent);
+}
+
+article > h3 {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+article > p,
+article > ul,
+article > .grpspecification,
+article > .star-rating,
+.competences-grid .star-rating {
+    width: 100%;
+    margin: 0;
+    padding: 1rem 1rem 1rem 1.05rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.54);
+    color: var(--text);
+}
+
+article > p,
+article > ul,
+article > .grpspecification {
+    border-left: 3px solid rgba(56, 189, 248, 0.45);
+}
+
+article > p,
+article > ul,
+article > .grpspecification {
+    line-height: 1.7;
+}
+
+article > ul,
+article > .grpspecification ul {
+    padding-left: 1.35rem;
+}
+
+article > ul li + li,
+article > .grpspecification li + li {
+    margin-top: 0.4rem;
+}
+
+article > .grpspecification {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+article > .grpspecification > ul {
+    margin: 0;
+}
+
+article > a {
+    position: relative;
+    width: 100%;
+    min-height: 14rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem 1rem 1rem 1.1rem;
+    border-radius: 18px;
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    border-left: 4px solid var(--accent);
+    overflow: hidden;
+    background: linear-gradient(145deg, var(--card-a, rgba(56, 189, 248, 0.12)), var(--card-b, rgba(15, 23, 42, 0.94)) 58%, rgba(2, 6, 23, 0.98));
+    box-shadow: 0 18px 0 -10px rgba(2, 6, 23, 0.34), 0 28px 60px rgba(2, 6, 23, 0.56);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+    transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+article > a:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.42);
+    box-shadow: 0 24px 0 -10px rgba(2, 6, 23, 0.36), 0 36px 76px rgba(2, 6, 23, 0.66);
+    background: linear-gradient(145deg, rgba(56, 189, 248, 0.16), var(--card-b, rgba(15, 23, 42, 0.94)) 58%, rgba(2, 6, 23, 1));
+}
+
+article > a > img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.72;
+    filter: saturate(0.88) contrast(1.04);
+    pointer-events: none;
+}
+
+article > a > iframe {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    opacity: 0.72;
+    pointer-events: none;
+}
+
+article > a > img[src$="projet4k.jpeg"] {
+    display: none;
+}
+
+article > a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(56, 189, 248, 0.1), transparent 30%),
+        linear-gradient(180deg, rgba(2, 6, 23, 0.1), rgba(2, 6, 23, 0.78)),
+        repeating-linear-gradient(90deg, transparent 0 24px, rgba(148, 163, 184, 0.06) 24px 25px),
+        repeating-linear-gradient(180deg, transparent 0 24px, rgba(148, 163, 184, 0.06) 24px 25px);
+    opacity: 0.58;
+}
+
+article > a::before {
+    content: var(--card-mark, "XX");
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0.45rem 0.8rem;
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(226, 232, 240, 0.1);
+    text-shadow: 0 0 18px rgba(56, 189, 248, 0.08);
+    white-space: pre;
+}
+
+article > a::after {
+    content: var(--card-tag, "TECH") "\A" var(--card-title, "Projet");
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.9rem;
+    z-index: 2;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(56, 189, 248, 0.22);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    line-height: 1.35;
+    white-space: pre-line;
+    pointer-events: none;
+}
+
+article > a:hover::after {
+    border-top-color: rgba(56, 189, 248, 0.45);
+}
+
+article > a:hover::before {
+    color: rgba(226, 232, 240, 0.14);
+}
+
+.aiframe {
+    height: calc(0.35 * 100vh);
+    background: rgba(15, 23, 42, 0.45);
+}
 
 .lire-suite-checkbox {
     display: none;
 }
 
 .lire-suite-label {
-    color: gray;
-    background-color: white;
     width: 100%;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
     margin: 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.68);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.lire-suite-label:hover {
+    border-color: var(--border-strong);
+    background: rgba(56, 189, 248, 0.08);
+    transform: translateY(-1px);
 }
 
 .lire-suite-label .label-text:after {
     content: "Lire la suite";
 }
 
-.lire-suite-checkbox:checked~.lire-suite-label .label-text:after {
+.lire-suite-checkbox:checked ~ .lire-suite-label .label-text:after {
     content: "Réduire";
-}
-
-.lire-suite-label:hover {
-    text-decoration: underline;
-}
-
-.lire-suite-checkbox:checked~.suite {
-    display: block;
 }
 
 .suite {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out;
-    margin-bottom: 10px;
+    margin: 0;
+    padding: 0 1rem;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    transition: max-height 0.35s ease, padding 0.35s ease, border-color 0.35s ease, background 0.35s ease;
 }
 
-.lire-suite-checkbox:checked~.suite {
+article a,
+.lire-suite-label,
+button {
+    transition: transform 0.18s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+article a:focus-visible,
+.lire-suite-label:focus-visible,
+button:focus-visible {
+    outline: 2px solid rgba(56, 189, 248, 0.65);
+    outline-offset: 3px;
+}
+
+.lire-suite-checkbox:checked ~ .suite {
     max-height: 1000px;
-    transition: max-height 0.5s ease-in;
-}
-
-@media only screen and (max-width: 1000px) {
-    #main {
-        padding: 10px;
-        /* Ajuster le padding pour les écrans de petite taille */
-        overflow: hidden;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    article {
-        padding-left: 5% !important;
-        /* Réduire le padding gauche */
-        width: 80% !important;
-        /* Utiliser une largeur relative */
-        max-width: none;
-        /* Réinitialiser la largeur maximale */
-    }
-
-    article>a>img {
-        width: calc(0.65*100vw);
-        border-radius: 10px;
-
-    }
-
-    article>a {
-        width: calc(0.65*100vw);
-    }
-
-    article>ul {
-        padding-left: 10% !important;
-    }
-
-    .aiframe {
-        height: calc(0.65* 100vh);
-    }
-
-    article>a>iframe {
-        width: 100vw;
-        height: 100vh;
-        border: none;
-        transform-origin: top left;
-        transform: scale(0.65);
-        pointer-events: none;
-    }
-}
-
-article>.star-rating {
-    /* Taille des étoiles */
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    padding: 1rem 1rem 0.95rem;
+    border-color: var(--border);
+    background: rgba(15, 23, 42, 0.54);
 }
 
 .star {
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: default;
-    color: gold;
-    /* Couleur des étoiles pleines */
-    margin: 0 5px;
+    color: #fbbf24;
+    margin: 0 0.2rem;
 }
 
 .star.empty {
-    color: lightgray;
-    /* Couleur des étoiles vides */
+    color: #64748b;
 }
 
-
-.obligatoire{
-    color: gray;
+.obligatoire {
+    color: var(--muted);
     font-style: italic;
     height: fit-content;
+}
+
+#main > article > div > img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+#main > .container {
+    position: relative;
+    border: 1px solid rgba(56, 189, 248, 0.16);
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 20px 0 -10px rgba(2, 6, 23, 0.34), 0 30px 60px rgba(2, 6, 23, 0.56);
+}
+
+#main > .container h2 {
+    position: relative;
+    padding-left: 0.85rem;
+}
+
+#main > .container h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.28em;
+    width: 3px;
+    height: 0.9em;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--accent), transparent);
+}
+
+/* Projets académiques */
+#main > article:nth-of-type(1) > a[href*="viewer.diagrams.net"] {
+    --card-mark: "PI";
+    --card-tag: "nftables / Suricata";
+    --card-title: "Protection d'infrastructure - Pare-feu nftables & IPS Suricata";
+    --card-a: rgba(56, 189, 248, 0.16);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(2) > a[href*="viewer.diagrams.net"] {
+    --card-mark: "IR";
+    --card-tag: "Proxmox / Réseau";
+    --card-title: "Conception et mise en œuvre d'une infrastructure réseau sécurisée à l'aide d'outils open-source";
+    --card-a: rgba(14, 165, 233, 0.16);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(3) > a[href*="LeBonStand.zip"] {
+    --card-mark: "RZ";
+    --card-tag: "PHP / SQL / JS";
+    --card-title: "Projet Application promouvant la culture (Rézisten)";
+    --card-a: rgba(56, 189, 248, 0.12);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(4) > a[href*="LeBonStand.zip"] {
+    --card-mark: "LB";
+    --card-tag: "Java / JavaFX";
+    --card-title: "Projet Application de gestion de marché (LeBonStand)";
+    --card-a: rgba(14, 165, 233, 0.12);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(5) > a[href*="installation_guide"] {
+    --card-mark: "SR";
+    --card-tag: "PostgreSQL / PHP";
+    --card-title: "Installation de services réseau";
+    --card-a: rgba(56, 189, 248, 0.14);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(6) > a[href*="SAE1.03.zip"] {
+    --card-mark: "PL";
+    --card-tag: "Linux / IntelliJ";
+    --card-title: "Projet d'installation d'un poste de développement Linux";
+    --card-a: rgba(14, 165, 233, 0.14);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(7) > a[href*="Projet_SAE_JAVA.zip"] {
+    --card-mark: "CJ";
+    --card-tag: "Java / Algo";
+    --card-title: "Projet classification (automatisé) Java";
+    --card-a: rgba(56, 189, 248, 0.12);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(8) > a[href*="S1.04.zip"] {
+    --card-mark: "BD";
+    --card-tag: "SQL / MCD";
+    --card-title: "Concevoir une base de données";
+    --card-a: rgba(14, 165, 233, 0.12);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(9) > a[href*="SAE1.03.zip"] {
+    --card-mark: "ED";
+    --card-tag: "PostgreSQL / Data";
+    --card-title: "Exploitation d’une base de données";
+    --card-a: rgba(56, 189, 248, 0.14);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(10) > a[href*="SAE05.06/html/accueil.html"] {
+    --card-mark: "HG";
+    --card-tag: "HTML / CSS / JS";
+    --card-title: "Projet création de site web (Hardis groupe)";
+    --card-a: rgba(14, 165, 233, 0.14);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+/* Projets externes */
+#main > article:nth-of-type(1) > a[href*="leclubdessin.fr"] {
+    --card-mark: "CD";
+    --card-tag: "HTML / PHP / JS";
+    --card-title: "Le club dessin";
+    --card-a: rgba(56, 189, 248, 0.16);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(2) > a[href*="infirmiere.onrender.com"] {
+    --card-mark: "CI";
+    --card-tag: "PHP / SQL / JS";
+    --card-title: "Les cahiers d'une infirmière";
+    --card-a: rgba(14, 165, 233, 0.16);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(3) > a[href*="entre2traits.fr"] {
+    --card-mark: "E2";
+    --card-tag: "HTML / PHP / JS";
+    --card-title: "Entre-2-traits";
+    --card-a: rgba(56, 189, 248, 0.12);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+/* Projets personnels */
+#main > article:nth-of-type(1) > a[href*="Personal_Banking"] {
+    --card-mark: "PB";
+    --card-tag: "React / Vite";
+    --card-title: "Personal Banking";
+    --card-a: rgba(14, 165, 233, 0.16);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(2) > a[href*="OpenJarvis"] {
+    --card-mark: "JV";
+    --card-tag: "Python / IA";
+    --card-title: "Jarvis";
+    --card-a: rgba(56, 189, 248, 0.14);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+#main > article:nth-of-type(3) > a[href*="Modular-Homelab-Dashboard"] {
+    --card-mark: "HL";
+    --card-tag: "Docker / Réseau";
+    --card-title: "Homelab Personelle";
+    --card-a: rgba(14, 165, 233, 0.14);
+    --card-b: rgba(15, 23, 42, 0.96);
+}
+
+@media only screen and (max-width: 1000px) {
+    main {
+        padding: 1rem 0.75rem 2rem;
+    }
+
+    #main {
+        grid-template-columns: 1fr;
+    }
+
+    #main > article:first-of-type,
+    #main > article:nth-of-type(2),
+    #main > .container {
+        transform: none;
+        clip-path: none;
+    }
+
+    #main > article {
+        width: 100%;
+    }
+
+    .aiframe {
+        height: calc(0.65 * 100vh);
+    }
+
+    #main > article:nth-of-type(2) {
+        width: 100%;
+    }
+}
+
+.competences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.competences-grid .star-rating {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    box-shadow: none;
+    position: relative;
+    padding-top: 2rem;
+}
+
+.competences-grid .star-rating::before {
+    content: var(--skill-chip, "SK");
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.34rem 0.55rem;
+    border: 1px solid rgba(56, 189, 248, 0.16);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.78);
+    color: rgba(148, 163, 184, 0.95);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.competences-grid .star-rating:nth-of-type(1) {
+    --skill-chip: "SYS";
+}
+
+.competences-grid .star-rating:nth-of-type(2) {
+    --skill-chip: "PY";
+}
+
+.competences-grid .star-rating:nth-of-type(3) {
+    --skill-chip: "NET";
+}
+
+.competences-grid .star-rating:nth-of-type(4) {
+    --skill-chip: "BASH";
+}
+
+.competences-grid .star-rating:nth-of-type(5) {
+    --skill-chip: "DEF";
+}
+
+.competences-grid .star-rating:nth-of-type(6) {
+    --skill-chip: "HUM";
+}
+
+.competences-grid .star-rating:nth-of-type(7) {
+    --skill-chip: "SQL";
+}
+
+.competences-grid .star-rating:nth-of-type(8) {
+    --skill-chip: "TOOLS";
+}
+
+.competences-grid .star-rating h3 {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    color: var(--text);
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.competences-grid .star-rating p {
+    margin: 0;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+@media only screen and (min-width: 1001px) {
+    #main > article:nth-of-type(2) {
+        transform: translateY(1.5rem);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #main > article:first-of-type,
+    #main > article:nth-of-type(2) {
+        transform: none;
+    }
 }
